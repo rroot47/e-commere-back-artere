@@ -58,6 +58,6 @@ public class ProductWeb {
     public ResponseEntity<?> downloadPicture(@PathVariable("id") Long id) throws IOException {
         byte[] picture = productService.downloadPicture(id);
         if(picture==null) throw new EOFException("File path not found");
-        return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.valueOf("image/jpg")).body(picture);
+        return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.valueOf("image/**")).body(picture);
     }
 }
