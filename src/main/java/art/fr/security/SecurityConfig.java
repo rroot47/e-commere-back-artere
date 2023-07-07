@@ -78,7 +78,7 @@ public class SecurityConfig {
         return httpSecurity
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeRequests(auth->auth.antMatchers(HttpMethod.OPTIONS).permitAll())
-                .authorizeRequests(auth->auth.antMatchers("/api/artere-cs/customer","/api/artere-cs/customer/login", "/swagger-ui/**", "/swagger-resources/**", "/v3/api-docs/**").permitAll())
+                .authorizeRequests(auth->auth.antMatchers("/api/artere-cs/products","/api/artere-cs/product/picture/**", "/api/artere-cs/customer","/api/artere-cs/customer/login", "/swagger-ui/**", "/swagger-resources/**", "/v3/api-docs/**").permitAll())
                 .authorizeRequests(auth->auth.anyRequest().authenticated())
                 .sessionManagement(sess->sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt)

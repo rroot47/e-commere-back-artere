@@ -14,4 +14,4 @@ public class ProductRequestDTO {
     private boolean available;
 }
 
-//{"name":"Test", "price":150, "quantity":30, "available":true}
+//{"name":"ACCER", "price":1500, "quantity":30, "available":true}
