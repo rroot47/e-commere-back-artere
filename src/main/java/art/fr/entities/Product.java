@@ -20,6 +20,8 @@ public class Product {
     private double price;
     private int quantity;
     private boolean available;
+    @Lob
+    @Column(columnDefinition ="MEDIUMBLOB")
     private String imagePath;
     @OneToMany(mappedBy = "product")
     private List<ProductItem> productItems;

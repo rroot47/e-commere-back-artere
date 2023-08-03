@@ -3,7 +3,6 @@ package art.fr.security;
 
 import art.fr.entities.Customer;
 import art.fr.repositosy.CustomerRepository;
-import art.fr.service.CustomerService;
 import com.nimbusds.jose.jwk.JWK;
 import com.nimbusds.jose.jwk.JWKSet;
 import com.nimbusds.jose.jwk.RSAKey;
@@ -78,7 +77,7 @@ public class SecurityConfig {
         return httpSecurity
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeRequests(auth->auth.antMatchers(HttpMethod.OPTIONS).permitAll())
-                .authorizeRequests(auth->auth.antMatchers("/api/artere-cs/products","/api/artere-cs/product/picture/**", "/api/artere-cs/customer","/api/artere-cs/customer/login", "/swagger-ui/**", "/swagger-resources/**", "/v3/api-docs/**").permitAll())
+                .authorizeRequests(auth->auth.antMatchers("/api/artere-cs/products","/api/artere-cs/product/pic/**", "/api/artere-cs/customer","/api/artere-cs/customer/login", "/swagger-ui/**", "/swagger-resources/**", "/v3/api-docs/**").permitAll())
                 .authorizeRequests(auth->auth.anyRequest().authenticated())
                 .sessionManagement(sess->sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt)
