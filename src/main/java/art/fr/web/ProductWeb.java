@@ -33,6 +33,11 @@ public class ProductWeb {
     @ResponseStatus(HttpStatus.OK)
     @GetMapping(ProductConstant.GET_ALL_PRODUCT)
     public List<ProductResponseDTO> getAllProducts() {
+        /*List<ProductResponseDTO> productResponseDTOList = productService.getAllProducts();
+        for(ProductResponseDTO productResponseDTO :productResponseDTOList){
+            String imagePath = getProductImageDownloadUrl(productResponseDTO.getId());
+            productResponseDTO.setImagePath(imagePath);
+        }*/
         return productService.getAllProducts();
     }
 
@@ -59,5 +64,10 @@ public class ProductWeb {
         byte[] picture = productService.downloadPicture(id);
         if(picture==null) throw new EOFException("File path not found");
         return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.valueOf("image/**")).body(picture);
+    }
+
+    @GetMapping("product/pic/{productId}")
+    public String getProductImageDownloadUrl(@PathVariable("productId")  Long productId){
+        return productService.getProductImageDownloadUrl(productId);
     }
 }
